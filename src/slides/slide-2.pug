@@ -1,20 +1,22 @@
 section
-    section(data-background-image='img/bitcoin-sketch.gif')
-        h1.black Bitcoin Developer
-        h2.black.fragment para iniciantes
     section
-        h2.fragment Who am I?
-        h3.fragment Fernando Guisso
-        p.fragment Desenvolvedor Jr. da Pague.nu, freelance e estudante de TI
-        p.fragment Redes sociais
+        h1 Testnet 3
+        p é uma alternativa ao block chain Bitcoin. Isso permite que desenvolvedores e bitcoin testers experimentem, sem tem que usar bitcoins reais ou se preocupar em quebrar a cadeia principal do Bitcoin.
     section
-        h2.fragment Things we need to now!
+        h1 Why 3 ?!?!
+        p Em resumo: A Testnet foi usada como Trade, o que dificultou a utilizanção para testes. A Testnet 2 entrou com um novo genesis block. Por fim a Testnet 3 chegou resolvendo alguns problemas e com novas features, em cima de um terceiro genesis block.
+    section(data-notes='Exemplos Mostrar o bitcoin core rodando a mainnet e depois a testnet open /Applications/Bitcoin-Qt.app --args -testnet')
+        h1 Principais Diferenças
         ul
-            li.fragment Testnet 3
-            li.fragment Explorando o Blockchain
-            li.fragment Criando uma wallet
-            li.fragment Gerando endereços
-            li.fragment URI
-            li.fragment API's e ferramentas
-            li.fragment Altcoins
-    section(data-background-image='img/kel.gif')
+            li.fragment Protocolo de rede e RPC em outra porta. (18333 e 18332)
+            li.fragment ADRESSVERSION diferente para não funcionar na mainnet. (0X6F ao inves de 0X00)
+            li.fragment Dificuldade de mineirar blocos na mainnet é metade da dificuldade na tesnet.
+    section
+        h1 Links
+        ul
+            li.fragment
+                a(href='http://testnetwallet.com/') Testnet Wallet by Blocktrail
+            li.fragment
+                a(href='http://tpfaucet.appspot.com/') TP's Tesnet Faucets
+            li.fragment
+                a(href='http://bitcoinfaucet.uo1.net/') UO1 Faucets
