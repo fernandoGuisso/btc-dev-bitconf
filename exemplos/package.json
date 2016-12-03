@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bitcore-lib": "^0.13.19",
     "blocktrail-sdk": "^2.1.4"
   }
 }
