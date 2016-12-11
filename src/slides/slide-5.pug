@@ -1,0 +1,31 @@
+section
+    section(data-notes='O que é input e o que é output')
+        h2 Spent e Unspent Transactions
+        img(src='img/UTXO-1.png')
+    section(data-notes='Input já foi usado, output é um input que ainda não foi usado, no caso de spent e unspent')
+        img(src='img/UTXO-2.png')
+    section
+        img(src='img/UTXO-3.png')
+    section
+        h1 Queimando bitcoins
+        h2 OP_RETURN
+        p.fragment é um script para marcar um output como invalido.
+    section
+        h3.fragment Adicionando dados em uma tx
+        pre.fragment
+            code
+                | const bitcore = require('bitcore-lib');
+            code
+                | const privateKey = new bitcore.PrivateKey('cSjxCWatxk2H3cEjo2YZDjqYSF1i5SSKArSwtcmvpAzjanczc3oY', bitcore.Networks.testnet);
+                | const utxo = {
+                |   "txId" : "c667f7ba68589885ea1eabec7bc457549af59878b3b4d262c6898355afb49ebe",
+                |   "outputIndex" : 0,
+                |   "address" : "mwPRxmdDtDchLWdf2WjwbASb7Fh4xnq5jD",
+                |   "script" : "76a914ae15c7d0c0ec5e2402b512b58bb8a20dafbfd49a88ac",
+                |   "satoshis" : 120000
+                | };
+            code
+                | const transaction = new bitcore.Transaction()
+                |     .from(utxo)
+                |     .addData('Eu sou o Imperador do Bitcoin!') // Add OP_RETURN data
+                |     .sign(privateKey);

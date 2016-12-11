@@ -1,8 +1,50 @@
-section(data-notes='Mostrar o exemplo, depois usar o address para receber')
-    h2 Gerando um address
-    pre.fragment
-        code
-            | const bitcore = require('bitcore-lib');
-            | const privateKey = new bitcore.PrivateKey(bitcore.Networks.testnet);
-            | const publicKey = new bitcore.PublicKey(privateKey);
-            | const address = new bitcore.Address(publicKey, bitcore.Networks.testnet);
+section
+    section(data-notes='Head da aplicação')
+        h2 Consultando um endereço - Node.js
+        pre.fragment
+            code
+                | const blocktrail = require('blocktrail-sdk');
+                | client = blocktrail.BlocktrailSDK({
+                |  apiKey, apiSecret, network: "BTC", testnet: true
+                | });
+            code
+                | client.address('1NcXPMRaanz43b1kokpPuYDdk6GGDvxT2T', (err, address) =>
+                |  console.log(address)
+                | );
+            code
+                | {
+                |   "address": "1NcXPMRaanz43b1kokpPuYDdk6GGDvxT2T",
+                |   "hash160": "ED12908714FFD43142BF9832692017E8AD54E9A8",
+                |   "balance": 49497392,
+                |   "received": 115015000,
+                |   "sent": 65517608,
+                |   "unconfirmed_received": 0,
+                |   "unconfirmed_sent": 0,
+                |   "unconfirmed_transactions": 0,
+                |   "total_transactions_in": 4,
+                |   "total_transactions_out": 10,
+                |   "category": "donations",
+                |   "tag": "blocktrail"
+                | }
+    section(data-notes='Lembre de mostrar os exemplos, q estão na pasta exemplos')
+        h2 Consultando balanço de um endereço
+        pre.fragment
+            code
+                | client.address('1NcXPMRaanz43b1kokpPuYDdk6GGDvxT2T', (err, address) =>
+                |  console.log(address.balance)
+                | );
+    section(data-notes='Sobre Outros, Outros no caso, dados escritos no blockchain, podem ser frases, imagens, arquivos e etc.')
+        h2 Consultando uma transação
+        pre.fragment
+            code
+                | client.transaction('tx_id', (err, tx) =>
+                |  console.log(tx)
+                | );
+    section(data-notes='Mostrar o exemplo, depois usar o address para receber')
+        h2 Gerando um address
+        pre.fragment
+            code
+                | const bitcore = require('bitcore-lib');
+                | const privateKey = new bitcore.PrivateKey(bitcore.Networks.testnet);
+                | const publicKey = new bitcore.PublicKey(privateKey);
+                | const address = new bitcore.Address(publicKey, bitcore.Networks.testnet);

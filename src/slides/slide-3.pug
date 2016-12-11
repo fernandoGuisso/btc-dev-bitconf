@@ -1,13 +1,16 @@
 section
-    section(data-notes="Outros no caso, dados escritos no blockchain, pode ser frases, imagens, arquivos e etc.")
+    section(data-background-image='img/btc-network.gif' data-background-size='auto 100%' data-notes='Falar sobre a semelhança do torrent, cada um doa um pedaço e você tem o todo.')
+    section(data-notes='getinfo: pega o index do ultimo bloco; getblockhash: pega a hash com index; getblock')
         h1 Explorando o Blockchain
-        p Explorar o Blockchain é consultar os blocos para saber informações guardadas nele como:
+        p Explorar o Blockchain, simplesmente é consultar os blocos para saber informações guardadas nele.
+        p.fragment Cada bloco tem essas informações:
         ul
-            li.fragment Endereço (Address)
-            li.fragment Balanço (Balance)
-            li.fragment Transações (Tx)
-            li.fragment Outros
-    section
+            li.fragment Uma lista de transações
+            li.fragment Hash para o bloco anterior
+            li.fragment Tamanho do bloco
+            li.fragment Contagem de transações
+            li.fragment Block Header
+    section(data-notes='pegar o txid da minha wallet, buscar seu blockhash e encontra-la na lista de txs')
         h2 Online
         ul
             li.fragment
@@ -18,87 +21,3 @@ section
                 a(href='https://blockchain.info/') Blockchain.info
             li.fragment
                 a(href='http://blockr.io/') Blockr
-
-    section(data-notes='Head ta aplicação, iniciar o client, prestar atenção na rede, testnet')
-        h2 Consultando um endereço - Node.js
-        pre.fragment
-            code
-                | const blocktrail = require('blocktrail-sdk');
-                | client = blocktrail.BlocktrailSDK({
-                |  apiKey, apiSecret, network: "BTC", testnet: true
-                | });
-            code
-                | client.address('1NcXPMRaanz43b1kokpPuYDdk6GGDvxT2T', (err, address) =>
-                |  console.log(address)
-                | );
-            code
-                | {
-                |   "address": "1NcXPMRaanz43b1kokpPuYDdk6GGDvxT2T",
-                |   "hash160": "ED12908714FFD43142BF9832692017E8AD54E9A8",
-                |   "balance": 49497392,
-                |   "received": 115015000,
-                |   "sent": 65517608,
-                |   "unconfirmed_received": 0,
-                |   "unconfirmed_sent": 0,
-                |   "unconfirmed_transactions": 0,
-                |   "total_transactions_in": 4,
-                |   "total_transactions_out": 10,
-                |   "category": "donations",
-                |   "tag": "blocktrail"
-                | }
-    section()
-        h2 Consultando um endereço - PHP
-        pre.fragment
-            code
-                | $address = $client->address('1NcXPMRaanz43b1kokpPuYDdk6GGDvxT2T');
-            code
-                | echo $address;
-    section()
-        h2 Consultando um endereço - Python
-        pre.fragment
-            code
-                | address = client.address('1NcXPMRaanz43b1kokpPuYDdk6GGDvxT2T')
-            code
-                | print(address)
-    section(data-notes='Lembre de mostrar os exemplos, q estão na pasta exemplos')
-        h2 Consultando balanço de um endereço - Node.js
-        pre.fragment
-            code
-                | client.address('1NcXPMRaanz43b1kokpPuYDdk6GGDvxT2T', (err, address) =>
-                |  console.log(address.balance)
-                | );
-    section()
-        h2 Consultando balanço de um endereço - PHP
-        pre.fragment
-            code
-                | $address = $client->address('1NcXPMRaanz43b1kokpPuYDdk6GGDvxT2T');
-            code
-                | echo $address['balance'];
-    section()
-        h2 Consultando balanço de um endereço - Python
-        pre.fragment
-            code
-                | address = client.address('1NcXPMRaanz43b1kokpPuYDdk6GGDvxT2T')
-            code
-                | print(address['balance'])
-    section()
-        h2 Consultando uma transação - Node.js
-        pre.fragment
-            code
-                | client.transaction('tx_id', (err, tx) =>
-                |  console.log(tx)
-                | );
-    section()
-        h2 Consultando uma transação - PHP
-        pre.fragment
-            code
-                | $tx = $client->transaction('tx_id');
-            code
-                | echo $tx;
-    section(data-notes='Sobre Outros, mostrar')
-        h2 Consultando uma transação - Python
-        pre.fragment
-            code
-                | tx = client.transaction('tx_id')
-            code
-                | print(tx)
